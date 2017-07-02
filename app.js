@@ -9,6 +9,7 @@ var express = require("express"),
 seedDB();
 mongoose.connect("mongodb://localhost/yelp_camp");
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 
 app.get("/", function(req, res) {
@@ -97,9 +98,6 @@ app.post("/campgrounds/:id/comments", function(req, res) {
             });
         }
     });
-    // create new comment
-    // connect new comment to campground
-    // redirect to campground show page
 });
 
 
